@@ -146,9 +146,9 @@ export default function Home() {
               <span className="inline-block px-4 py-1.5 rounded-full bg-white/10 text-white font-bold text-sm mb-6 border border-white/20 backdrop-blur-md">Exclusive Collection</span>
               <h2 className="text-5xl md:text-6xl font-black text-white mb-6 leading-tight">Elevate Your Space with Premium Tech.</h2>
               <p className="text-xl text-gray-300 mb-10 max-w-lg font-medium leading-relaxed">Experience uncompromised quality and state-of-the-art design with our new arrival of elite electronics.</p>
-              <button className="bg-white text-gray-900 px-10 py-5 rounded-full font-bold text-lg hover:bg-gray-100 hover:scale-105 transition-all shadow-[0_0_30px_rgba(255,255,255,0.3)]">
+              <Link href="/products" className="inline-block bg-white text-gray-900 px-10 py-5 rounded-full font-bold text-lg hover:bg-gray-100 hover:scale-105 transition-all shadow-[0_0_30px_rgba(255,255,255,0.3)]">
                 Shop The Drop
-              </button>
+              </Link>
             </div>
             
             <div className="relative z-10 w-full md:w-5/12 flex justify-center">

@@ -23,3 +23,14 @@ body {
 .modern-card {
   @apply bg-white border border-[var(--border)] rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300;
 }
+
+@keyframes marquee {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+.animate-marquee {
+  animation: marquee 15s linear infinite;
+  display: inline-block;
+  white-space: nowrap;
+}

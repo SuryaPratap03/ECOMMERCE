@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Outfit, Space_Grotesk } from "next/font/google";
 import "./globals.css";
+import { StoreProvider } from "@/contexts/StoreContext";
 
 const outfit = Outfit({
   variable: "--font-outfit",
@@ -28,7 +29,9 @@ export default function RootLayout({
       className={`${outfit.variable} ${spaceGrotesk.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col font-sans overflow-x-hidden">
-        {children}
+        <StoreProvider>
+          {children}
+        </StoreProvider>
       </body>
     </html>
   );
