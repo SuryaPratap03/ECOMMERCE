@@ -46,7 +46,7 @@ export default function Home() {
                 <Link href="/products" className="bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-4 rounded-full font-bold transition-all shadow-lg hover:shadow-xl hover:-translate-y-1 text-center flex justify-center items-center gap-2">
                   <ShoppingBag className="w-5 h-5" /> Shop All Categories
                 </Link>
-                <Link href="/products?category=Electronics" className="bg-white hover:bg-gray-50 text-indigo-900 border border-indigo-100 px-8 py-4 rounded-full font-bold transition-all hover:-translate-y-1 text-center shadow-sm flex justify-center items-center gap-2">
+                <Link href="/products?category=Laptops" className="bg-white hover:bg-gray-50 text-indigo-900 border border-indigo-100 px-8 py-4 rounded-full font-bold transition-all hover:-translate-y-1 text-center shadow-sm flex justify-center items-center gap-2">
                   View Today's Deals
                 </Link>
               </div>
@@ -153,7 +153,7 @@ export default function Home() {
             
             <div className="relative z-10 w-full md:w-5/12 flex justify-center">
               <div className="relative w-full aspect-square bg-gradient-to-b from-white/10 to-white/5 backdrop-blur-lg rounded-full flex items-center justify-center p-12 border border-white/20 shadow-2xl">
-                <img src="https://cdn.dummyjson.com/product-images/laptops/lenovo-yoga-920/thumbnail.webp" alt="Premium Tech" className="object-contain w-full h-full drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)] scale-110" />
+                <img src="https://cdn.dummyjson.com/product-images/smartphones/iphone-13-pro/thumbnail.webp" alt="Premium Tech" className="object-contain w-full h-full drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)] scale-110" />
               </div>
             </div>
           </div>
