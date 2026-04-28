@@ -38,6 +38,8 @@ interface StoreContextType {
   setLanguage: (lang: string) => void;
   currency: string;
   setCurrency: (curr: string) => void;
+  isLoginModalOpen: boolean;
+  setLoginModalOpen: (open: boolean) => void;
 }
 
 const StoreContext = createContext<StoreContextType | undefined>(undefined);
@@ -49,6 +51,7 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
   const [toastMessage, setToastMessage] = useState<string | null>(null);
   const [language, setLanguage] = useState("English");
   const [currency, setCurrency] = useState("USD");
+  const [isLoginModalOpen, setLoginModalOpen] = useState(false);
 
   const showToast = (msg: string) => {
     setToastMessage(msg);
@@ -172,7 +175,7 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
   };
 
   return (
-    <StoreContext.Provider value={{ user, login, logout, cart, orders, addToCart, removeFromCart, updateQuantity, placeOrder, returnOrder, showToast, language, setLanguage, currency, setCurrency }}>
+    <StoreContext.Provider value={{ user, login, logout, cart, orders, addToCart, removeFromCart, updateQuantity, placeOrder, returnOrder, showToast, language, setLanguage, currency, setCurrency, isLoginModalOpen, setLoginModalOpen }}>
       {children}
       <AnimatePresence>
         {toastMessage && (

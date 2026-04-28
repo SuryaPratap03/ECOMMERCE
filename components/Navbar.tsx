@@ -9,9 +9,8 @@ import { Product, PRODUCTS } from "@/lib/products";
 import { useStore } from "@/contexts/StoreContext";
 
 export default function Navbar() {
-  const { user, login, logout, cart, addToCart, showToast, language, setLanguage, currency, setCurrency } = useStore();
+  const { user, login, logout, cart, addToCart, showToast, language, setLanguage, currency, setCurrency, isLoginModalOpen, setLoginModalOpen } = useStore();
   const [showLocationModal, setShowLocationModal] = useState(false);
-  const [showLoginModal, setShowLoginModal] = useState(false);
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
   const [loginError, setLoginError] = useState("");
@@ -22,7 +21,7 @@ export default function Navbar() {
     e.preventDefault();
     if (loginEmail === "user@gmail.com" && loginPassword === "Password@123") {
       login(loginEmail);
-      setShowLoginModal(false);
+      setLoginModalOpen(false);
       setLoginError("");
       setLoginEmail("");
       setLoginPassword("");
@@ -361,7 +360,7 @@ export default function Navbar() {
               <div className="relative hidden lg:block">
                 <div 
                   className="flex flex-col leading-none cursor-pointer hover:border border-transparent hover:border-gray-300 p-1 rounded"
-                  onClick={() => user ? setShowUserDropdown(!showUserDropdown) : setShowLoginModal(true)}
+                  onClick={() => user ? setShowUserDropdown(!showUserDropdown) : setLoginModalOpen(true)}
                 >
                   <span className="text-[10px] text-gray-500">{user ? `Hello, ${user.name}` : "Hello, Sign in"}</span>
                   <span className="font-bold text-gray-900 flex items-center gap-1 text-sm">Account <ChevronDown className="w-3 h-3" /></span>
@@ -426,7 +425,7 @@ export default function Navbar() {
       </div>
 
       {/* Login Modal */}
-      {showLoginModal && (
+      {isLoginModalOpen && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-sm">
           <motion.div 
             initial={{ opacity: 0, scale: 0.95 }}
@@ -434,7 +433,7 @@ export default function Navbar() {
             className="bg-white rounded-[24px] shadow-2xl w-full max-w-md overflow-hidden mx-4 relative"
           >
             <button 
-              onClick={() => setShowLoginModal(false)} 
+              onClick={() => setLoginModalOpen(false)} 
               className="absolute top-4 right-4 text-gray-400 hover:text-gray-900 transition-colors bg-gray-100 hover:bg-gray-200 rounded-full p-1.5"
             >
               <X className="w-5 h-5" />
@@ -443,6 +442,9 @@ export default function Navbar() {
               <div className="text-center mb-8">
                 <h2 className="text-3xl font-black text-gray-900 tracking-tight">Welcome back</h2>
                 <p className="text-gray-500 mt-2 text-sm font-medium">Please enter your details to sign in.</p>
+                <div className="mt-4 p-3 bg-indigo-50 border border-indigo-100 rounded-xl">
+                  <p className="text-sm font-bold text-indigo-700">Please use demo credentials to login</p>
+                </div>
               </div>
               
               <form onSubmit={handleLogin} className="space-y-5">
@@ -645,15 +647,17 @@ export default function Navbar() {
                 <div className="px-4 pb-4 mb-4 border-b border-gray-100">
                   <h3 className="font-bold text-lg text-gray-900 mb-3">Settings & Support</h3>
                   <div className="space-y-3">
-                    <button 
-                      onClick={() => {
-                        setShowMobileMenu(false);
-                        if (!user) setShowLoginModal(true);
-                      }}
-                      className="w-full text-left text-gray-600 hover:text-blue-600 hover:bg-gray-50 px-2 py-1 rounded"
-                    >
-                      {user ? "Your Account" : "Sign In"}
-                    </button>
+                    {!user && (
+                      <button 
+                        onClick={() => {
+                          setShowMobileMenu(false);
+                          setLoginModalOpen(true);
+                        }}
+                        className="w-full text-left text-gray-600 hover:text-blue-600 hover:bg-gray-50 px-2 py-1 rounded"
+                      >
+                        Sign In
+                      </button>
+                    )}
                     <Link href="/orders" onClick={() => setShowMobileMenu(false)} className="block text-gray-600 hover:text-blue-600 hover:bg-gray-50 px-2 py-1 rounded">Returns & Orders</Link>
                     <button 
                       onClick={() => {

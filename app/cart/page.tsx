@@ -9,7 +9,7 @@ import { useStore } from "@/contexts/StoreContext";
 import { Trash2, Minus, Plus, ShoppingBag, ArrowRight, ShieldCheck, Truck } from "lucide-react";
 
 export default function CartPage() {
-  const { cart, updateQuantity, removeFromCart, user, showToast, placeOrder } = useStore();
+  const { cart, updateQuantity, removeFromCart, user, showToast, placeOrder, setLoginModalOpen } = useStore();
   const [mounted, setMounted] = useState(false);
   const router = useRouter();
 
@@ -124,6 +124,7 @@ export default function CartPage() {
                 onClick={() => {
                   if (!user) {
                     showToast("Please sign in to complete your purchase.");
+                    setLoginModalOpen(true);
                   } else {
                     placeOrder(total);
                     showToast("Order placed successfully! Redirecting to your orders...");
