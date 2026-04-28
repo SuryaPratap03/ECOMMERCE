@@ -133,7 +133,7 @@ function ProductsContent() {
                       addToCart(product);
                       showToast(`${product.title} added to cart!`);
                     }}
-                    className="absolute bottom-4 left-1/2 -translate-x-1/2 translate-y-10 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 bg-indigo-600 text-white px-6 py-3 rounded-full font-bold text-sm shadow-xl transition-all duration-300 z-20 hover:bg-indigo-700 hover:scale-105 flex items-center gap-2"
+                    className="absolute bottom-4 left-1/2 -translate-x-1/2 md:translate-y-10 md:opacity-0 translate-y-0 opacity-100 md:group-hover:translate-y-0 md:group-hover:opacity-100 bg-indigo-600 text-white px-6 py-3 rounded-full font-bold text-sm shadow-xl transition-all duration-300 z-20 hover:bg-indigo-700 hover:scale-105 flex items-center gap-2"
                   >
                     <ShoppingBag className="w-4 h-4" /> Add to Cart
                   </button>
