@@ -24,6 +24,7 @@ function ProductsContent() {
 
   const handleCategoryClick = (cat: string) => {
     setActiveCategory(cat);
+    setIsMobileFilterOpen(false);
     if (searchQ) {
       if (cat === "All") {
         router.push('/products');
@@ -102,7 +103,10 @@ function ProductsContent() {
                 {PRICE_RANGES.map(price => (
                   <button 
                     key={price}
-                    onClick={() => setActivePriceRange(price)}
+                    onClick={() => {
+                      setActivePriceRange(price);
+                      setIsMobileFilterOpen(false);
+                    }}
                     className={`text-left text-base font-bold flex items-center gap-4 group`}
                   >
                     <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center transition-colors ${activePriceRange === price ? 'border-indigo-600 bg-indigo-50' : 'border-gray-200 group-hover:border-indigo-400'}`}>

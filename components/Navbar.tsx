@@ -420,6 +420,11 @@ export default function Navbar() {
         </nav>
       </header>
 
+      {/* Mobile Announcement Bar */}
+      <div className="bg-gray-900 text-white text-xs py-1.5 px-4 block md:hidden overflow-hidden">
+        <p className="animate-marquee whitespace-nowrap"><span className="inline-flex items-center gap-2"><Bell className="w-3 h-3 text-yellow-400" /> Flash Sale: Up to 50% off select Electronics! Ends in 02:14:59</span></p>
+      </div>
+
       {/* Login Modal */}
       {showLoginModal && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-sm">
