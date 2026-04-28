@@ -403,18 +403,18 @@ export default function Navbar() {
         </div>
 
         {/* Secondary Navigation */}
-        <nav className="bg-gray-100 border-t border-gray-200">
+        <nav className="bg-gray-100 border-t border-gray-200 hidden md:block">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center gap-6 overflow-x-auto whitespace-nowrap py-2 hide-scrollbar">
-              <button className="flex items-center gap-1 font-bold text-gray-800 hover:text-blue-600 text-sm">
+              <Link href="/products" className="flex items-center gap-1 font-bold text-gray-800 hover:text-blue-600 text-sm">
                 <Menu className="w-4 h-4" /> All
-              </button>
+              </Link>
               <Link href="/products" className="text-sm font-medium text-gray-700 hover:text-blue-600">Today's Deals</Link>
-              <Link href="/products?category=electronics" className="text-sm font-medium text-gray-700 hover:text-blue-600">Customer Service</Link>
-              <Link href="/products?category=electronics" className="text-sm font-medium text-gray-700 hover:text-blue-600">Electronics</Link>
-              <Link href="/products?category=clothing" className="text-sm font-medium text-gray-700 hover:text-blue-600">Fashion</Link>
-              <Link href="/products?category=jewelery" className="text-sm font-medium text-gray-700 hover:text-blue-600">Jewelery</Link>
-              <Link href="/products" className="text-sm font-medium text-gray-700 hover:text-blue-600">New Releases</Link>
+              <Link href="/products?category=Laptops" className="text-sm font-medium text-gray-700 hover:text-blue-600">Laptops</Link>
+              <Link href="/products?category=Smartphones" className="text-sm font-medium text-gray-700 hover:text-blue-600">Smartphones</Link>
+              <Link href="/products?category=Fashion" className="text-sm font-medium text-gray-700 hover:text-blue-600">Fashion</Link>
+              <Link href="/products?category=Watches" className="text-sm font-medium text-gray-700 hover:text-blue-600">Watches</Link>
+              <Link href="/products?category=Furniture" className="text-sm font-medium text-gray-700 hover:text-blue-600">Furniture</Link>
             </div>
           </div>
         </nav>
@@ -628,11 +628,12 @@ export default function Navbar() {
                 <div className="px-4 pb-4 mb-4 border-b border-gray-100">
                   <h3 className="font-bold text-lg text-gray-900 mb-3">Shop by Category</h3>
                   <div className="space-y-3">
-                    <Link href="/products" onClick={() => setShowMobileMenu(false)} className="block text-gray-600 hover:text-blue-600 hover:bg-gray-50 px-2 py-1 rounded">Today's Deals</Link>
-                    <Link href="/products?category=Electronics" onClick={() => setShowMobileMenu(false)} className="block text-gray-600 hover:text-blue-600 hover:bg-gray-50 px-2 py-1 rounded">Electronics</Link>
+                    <Link href="/products" onClick={() => setShowMobileMenu(false)} className="block text-gray-600 hover:text-blue-600 hover:bg-gray-50 px-2 py-1 rounded">All Products</Link>
+                    <Link href="/products?category=Laptops" onClick={() => setShowMobileMenu(false)} className="block text-gray-600 hover:text-blue-600 hover:bg-gray-50 px-2 py-1 rounded">Laptops</Link>
+                    <Link href="/products?category=Smartphones" onClick={() => setShowMobileMenu(false)} className="block text-gray-600 hover:text-blue-600 hover:bg-gray-50 px-2 py-1 rounded">Smartphones</Link>
                     <Link href="/products?category=Fashion" onClick={() => setShowMobileMenu(false)} className="block text-gray-600 hover:text-blue-600 hover:bg-gray-50 px-2 py-1 rounded">Fashion</Link>
-                    <Link href="/products?category=Jewelery" onClick={() => setShowMobileMenu(false)} className="block text-gray-600 hover:text-blue-600 hover:bg-gray-50 px-2 py-1 rounded">Jewelery</Link>
-                    <Link href="/products" onClick={() => setShowMobileMenu(false)} className="block text-gray-600 hover:text-blue-600 hover:bg-gray-50 px-2 py-1 rounded">New Releases</Link>
+                    <Link href="/products?category=Watches" onClick={() => setShowMobileMenu(false)} className="block text-gray-600 hover:text-blue-600 hover:bg-gray-50 px-2 py-1 rounded">Watches</Link>
+                    <Link href="/products?category=Furniture" onClick={() => setShowMobileMenu(false)} className="block text-gray-600 hover:text-blue-600 hover:bg-gray-50 px-2 py-1 rounded">Furniture</Link>
                   </div>
                 </div>
 

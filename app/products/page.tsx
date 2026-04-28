@@ -62,7 +62,6 @@ function ProductsContent() {
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 border-b border-gray-200 pb-8 gap-6">
           <div>
             <h1 className="text-4xl md:text-5xl font-black text-gray-900 tracking-tight">The Collection</h1>
-            <p className="text-xl text-gray-500 mt-3 font-medium">Discover {filteredProducts.length} premium products carefully curated for you.</p>
           </div>
           
           <button 
