@@ -16,6 +16,7 @@ export default function Navbar() {
   const [loginPassword, setLoginPassword] = useState("");
   const [loginError, setLoginError] = useState("");
   const [showUserDropdown, setShowUserDropdown] = useState(false);
+  const [showMobileMenu, setShowMobileMenu] = useState(false);
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
@@ -167,7 +168,10 @@ export default function Navbar() {
             
             {/* Logo & Mobile Menu */}
             <div className="flex items-center gap-4 shrink-0">
-              <button className="lg:hidden p-1 text-gray-600 hover:text-blue-600">
+              <button 
+                className="lg:hidden p-1 text-gray-600 hover:text-blue-600"
+                onClick={() => setShowMobileMenu(true)}
+              >
                 <Menu className="w-6 h-6" />
               </button>
               <Link href="/" className="font-black text-2xl tracking-tighter text-blue-700 flex items-center gap-1">
@@ -589,6 +593,95 @@ export default function Navbar() {
           </div>
         </div>
       )}
+
+      {/* Mobile Menu */}
+      <AnimatePresence>
+        {showMobileMenu && (
+          <>
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-[110] bg-black/60 backdrop-blur-sm"
+              onClick={() => setShowMobileMenu(false)}
+            />
+            <motion.div 
+              initial={{ x: "-100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "-100%" }}
+              transition={{ type: "spring", bounce: 0, duration: 0.3 }}
+              className="fixed inset-y-0 left-0 z-[120] w-4/5 max-w-sm bg-white shadow-2xl flex flex-col"
+            >
+              <div className="bg-gray-900 text-white px-4 py-6 flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <User className="w-8 h-8 bg-gray-800 rounded-full p-1.5" />
+                  <span className="font-bold text-lg">
+                    {user ? `Hello, ${user.name}` : "Hello, Sign in"}
+                  </span>
+                </div>
+                <button onClick={() => setShowMobileMenu(false)} className="text-gray-400 hover:text-white">
+                  <X className="w-6 h-6" />
+                </button>
+              </div>
+              
+              <div className="flex-1 overflow-y-auto py-4 px-2">
+                <div className="px-4 pb-4 mb-4 border-b border-gray-100">
+                  <h3 className="font-bold text-lg text-gray-900 mb-3">Shop by Category</h3>
+                  <div className="space-y-3">
+                    <Link href="/products" onClick={() => setShowMobileMenu(false)} className="block text-gray-600 hover:text-blue-600 hover:bg-gray-50 px-2 py-1 rounded">Today's Deals</Link>
+                    <Link href="/products?category=Electronics" onClick={() => setShowMobileMenu(false)} className="block text-gray-600 hover:text-blue-600 hover:bg-gray-50 px-2 py-1 rounded">Electronics</Link>
+                    <Link href="/products?category=Fashion" onClick={() => setShowMobileMenu(false)} className="block text-gray-600 hover:text-blue-600 hover:bg-gray-50 px-2 py-1 rounded">Fashion</Link>
+                    <Link href="/products?category=Jewelery" onClick={() => setShowMobileMenu(false)} className="block text-gray-600 hover:text-blue-600 hover:bg-gray-50 px-2 py-1 rounded">Jewelery</Link>
+                    <Link href="/products" onClick={() => setShowMobileMenu(false)} className="block text-gray-600 hover:text-blue-600 hover:bg-gray-50 px-2 py-1 rounded">New Releases</Link>
+                  </div>
+                </div>
+
+                <div className="px-4 pb-4 mb-4 border-b border-gray-100">
+                  <h3 className="font-bold text-lg text-gray-900 mb-3">Settings & Support</h3>
+                  <div className="space-y-3">
+                    <button 
+                      onClick={() => {
+                        setShowMobileMenu(false);
+                        if (!user) setShowLoginModal(true);
+                      }}
+                      className="w-full text-left text-gray-600 hover:text-blue-600 hover:bg-gray-50 px-2 py-1 rounded"
+                    >
+                      {user ? "Your Account" : "Sign In"}
+                    </button>
+                    <Link href="/orders" onClick={() => setShowMobileMenu(false)} className="block text-gray-600 hover:text-blue-600 hover:bg-gray-50 px-2 py-1 rounded">Returns & Orders</Link>
+                    <button 
+                      onClick={() => {
+                        setShowMobileMenu(false);
+                        setTempLocation(location);
+                        setShowLocationModal(true);
+                      }} 
+                      className="w-full text-left text-gray-600 hover:text-blue-600 hover:bg-gray-50 px-2 py-1 rounded flex items-center justify-between"
+                    >
+                      <span>Delivery Location</span>
+                      <span className="text-xs text-gray-400 bg-gray-100 px-2 py-0.5 rounded">{location.countryCode}</span>
+                    </button>
+                    <Link href="/help" onClick={() => setShowMobileMenu(false)} className="block text-gray-600 hover:text-blue-600 hover:bg-gray-50 px-2 py-1 rounded">Customer Service</Link>
+                  </div>
+                </div>
+
+                {user && (
+                  <div className="px-4">
+                    <button 
+                      onClick={() => {
+                        logout();
+                        setShowMobileMenu(false);
+                      }}
+                      className="w-full text-left text-red-600 hover:bg-red-50 px-2 py-2 rounded flex items-center gap-2"
+                    >
+                      <LogOut className="w-4 h-4" /> Sign Out
+                    </button>
+                  </div>
+                )}
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
     </>
   );
 }
